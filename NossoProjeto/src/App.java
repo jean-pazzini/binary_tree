@@ -18,7 +18,7 @@ public class App {
             System.out.println("1. Carregar texto");
             System.out.println("2. Exibir estatísticas");
             System.out.println("0. Sair");
-            System.out.println("Opção: ");
+            System.out.print("Opção: ");
             opcao = scanner.nextInt();
 
             switch (opcao) {
@@ -34,9 +34,11 @@ public class App {
                             totalPalavras += palavras.length;
                             for (String palavra : palavras) {
                                 arvore.insereNovoNo(new Palavra(palavra));
+                                if(palavra.length() > palavraMaisLonga.length()){
+                                    palavraMaisLonga = palavra;
+                                }
                                 totalPalavrasDistintas++;
                             }
-                            
                         }
                         System.out.println("TEXTO CARREGADO");
                         scMusica.close();
