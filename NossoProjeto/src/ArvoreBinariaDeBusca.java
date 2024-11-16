@@ -27,4 +27,45 @@ public class ArvoreBinariaDeBusca {
         return totalPalavrasDistintas;
     }
 
+
+    public int buscar(String palavra) {
+        return buscarRecursivo(root, palavra);
+    }
+
+    private int buscarRecursivo(Node no, String palavra) {
+        if (no == null) {
+            return 0; // Palavra não encontrada
+        }
+
+        int comparacao = palavra.compareTo(no.palavra.getPalavra());
+        if (comparacao < 0) {
+            return buscarRecursivo(no.left, palavra);
+        } else if (comparacao > 0) {
+            return buscarRecursivo(no.right, palavra);
+        } else {
+            return no.palavra.getOcorrencia(); // Palavra encontrada, retorna as ocorrências
+        }
+    }
 }
+
+
+//     boolean procurar(String palavra) {
+//         return procurarRec(root, palavra);
+//     }
+
+
+//     boolean procurarRec(Node root, String palavra) {
+//         if (root == null)
+//             return false;
+
+//         if (root.palavra.equals(palavra))
+//             return true;
+
+//         if (palavra.compareTo(root.palavra) < 0)
+//             return procurarRec(root.left, palavra);
+
+//         return procurarRec(root.right, palavra);
+//     }
+// }
+
+
