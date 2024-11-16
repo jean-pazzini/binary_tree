@@ -37,8 +37,8 @@ public class App {
                                 if(palavra.length() > palavraMaisLonga.length()){
                                     palavraMaisLonga = palavra;
                                 }
-                                totalPalavrasDistintas++;
                             }
+                            totalPalavrasDistintas = arvore.getTotalPalavrasDistintas();
                         }
                         System.out.println("TEXTO CARREGADO");
                         scMusica.close();

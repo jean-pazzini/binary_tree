@@ -1,5 +1,6 @@
 public class ArvoreBinariaDeBusca {
     Node root;
+    int totalPalavrasDistintas;
 
     public void insereNovoNo(Palavra palavra) {
         root = insereRecursivo(root, palavra);
@@ -7,6 +8,7 @@ public class ArvoreBinariaDeBusca {
 
     private Node insereRecursivo(Node root, Palavra palavra) {
         if (root == null) {
+            totalPalavrasDistintas++;
             return new Node(palavra);
         }
 
@@ -19,7 +21,10 @@ public class ArvoreBinariaDeBusca {
         }
 
         return root;
+    }
 
+    public int getTotalPalavrasDistintas() {
+        return totalPalavrasDistintas;
     }
 
 }
