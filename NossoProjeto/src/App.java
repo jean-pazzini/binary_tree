@@ -16,10 +16,12 @@ public class App {
         String palavraMaisLonga = "";
 
         do {
+            System.out.println("----------------------");
             System.out.println("1. Carregar texto");
             System.out.println("2. Exibir estatísticas");
             System.out.println("3. Busca por palavra");
             System.out.println("0. Sair");
+            System.out.println("----------------------");
             System.out.print("Opção: ");
             opcao = scanner.nextInt();
 
@@ -57,12 +59,14 @@ public class App {
                     System.out.println("Total de palavras: " + totalPalavras);
                     System.out.println("Total de palavras distintas: " + totalPalavrasDistintas);
                     System.out.println("Palavra mais longa: " + palavraMaisLonga);
+                    break;
                 
                 case 3:
                     System.out.println("Digite uma palavra: ");
                     String palavra = scanner.next();
                     qntOcorrencias = arvore.buscar(palavra);
                     System.out.println("Quantidade de ocorrencias da palavra " + palavra + " : " +qntOcorrencias + " Vezes");
+                    break;
                     
 
 
