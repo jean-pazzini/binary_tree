@@ -46,26 +46,8 @@ public class ArvoreBinariaDeBusca {
             return no.palavra.getOcorrencia(); // Palavra encontrada, retorna as ocorrências
         }
     }
+
+    
 }
-
-
-//     boolean procurar(String palavra) {
-//         return procurarRec(root, palavra);
-//     }
-
-
-//     boolean procurarRec(Node root, String palavra) {
-//         if (root == null)
-//             return false;
-
-//         if (root.palavra.equals(palavra))
-//             return true;
-
-//         if (palavra.compareTo(root.palavra) < 0)
-//             return procurarRec(root.left, palavra);
-
-//         return procurarRec(root.right, palavra);
-//     }
-// }
 
 

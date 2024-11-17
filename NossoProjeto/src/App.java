@@ -1,6 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class App {
     public static void main(String[] args) throws FileNotFoundException {
@@ -13,13 +19,17 @@ public class App {
         int totalPalavras = 0;
         int totalPalavrasDistintas = 0;
         int qntOcorrencias = 0;
+        Map<String, Integer> Ordena = new TreeMap<>();
         String palavraMaisLonga = "";
+        int numero = 0;
+       
 
         do {
             System.out.println("----------------------");
             System.out.println("1. Carregar texto");
             System.out.println("2. Exibir estatísticas");
             System.out.println("3. Busca por palavra");
+            System.out.println("4. Ordem Alfabetica e quantidade");
             System.out.println("0. Sair");
             System.out.println("----------------------");
             System.out.print("Opção: ");
@@ -38,11 +48,15 @@ public class App {
                             totalPalavras += palavras.length;
                             for (String palavra : palavras) {
                                 arvore.insereNovoNo(new Palavra(palavra));
+                                numero = arvore.buscar(palavra);
+                                Ordena.put(palavra, numero);
+                                
                                 if(palavra.length() > palavraMaisLonga.length()){
                                     palavraMaisLonga = palavra;
                                 }
                             }
                             totalPalavrasDistintas = arvore.getTotalPalavrasDistintas();
+                        
                         }
                         System.out.println("TEXTO CARREGADO");
                         scMusica.close();
@@ -67,7 +81,20 @@ public class App {
                     qntOcorrencias = arvore.buscar(palavra);
                     System.out.println("Quantidade de ocorrencias da palavra " + palavra + " : " +qntOcorrencias + " Vezes");
                     break;
-                    
+                
+                case 4: 
+                // Um HashMap é criado para armazenar as palavras e suas respectivas contagens.
+                // Os pares (palavra, contagem) são adicionados ao Map usando o método put().
+                // Map.Entry: Representa uma associação chave-valor.
+                // entry.getKey(): Obtém a chave (palavra).
+                // entry.getValue(): Obtém o valor (contagem).
+                
+                for (Map.Entry<String, Integer> entry : Ordena.entrySet()) {
+                    String palavraMap = entry.getKey(); // Obtém a chave (palavra)
+                    int contagem = entry.getValue(); // Obtém o valor (contagem)
+                    System.out.println("A palavra '" + palavraMap + "' aparece " + contagem + " vezes.");
+                }
+                break; 
 
 
                 case 0:
