@@ -40,21 +40,22 @@ public class App {
                         Scanner scMusica = new Scanner(musica);
                         while (scMusica.hasNext()) {
                             
-                            qtdLinhas++;
                             String linha = scMusica.nextLine();
-                            String[] palavras = linha.split("\\s+");
-                            totalPalavras += palavras.length;
-                            for (String palavra : palavras) {
-                                arvore.insereNovoNo(new Palavra(palavra));
-                                numero = arvore.buscar(palavra);
-                                Ordena.put(palavra, numero);
+                            if(!linha.isEmpty()) {
+                                qtdLinhas++;
+                                String[] palavras = linha.split("\\s+");
+                                totalPalavras += palavras.length;
+                                for (String palavra : palavras) {
+                                    arvore.insereNovoNo(new Palavra(palavra));
+                                    numero = arvore.buscar(palavra);
+                                    Ordena.put(palavra, numero);
                                 
-                                if(palavra.length() > palavraMaisLonga.length()){
-                                    palavraMaisLonga = palavra;
+                                    if(palavra.length() > palavraMaisLonga.length()){
+                                        palavraMaisLonga = palavra;
+                                    }
                                 }
+                                totalPalavrasDistintas = arvore.getTotalPalavrasDistintas();
                             }
-                            totalPalavrasDistintas = arvore.getTotalPalavrasDistintas();
-                        
                         }
                         System.out.println("TEXTO CARREGADO");
                         scMusica.close();
