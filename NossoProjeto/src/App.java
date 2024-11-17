@@ -7,6 +7,20 @@ import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
+// +--------------------------------------------------------------------------------------+
+// |                        Universidade Presbiteriana Mackenzie                          |
+// |                                                                                      |
+// |                                        FCI                                           |
+// |                                                                                      |
+// |                                     S.I - 03J                                        |
+// |                                                                                      |
+// |                               Bruna Franca Martinez                                  |
+// |                                    RA: 10420225                                      |
+// |                                                                                      |
+// |                               Jean Pazzini Domingues                                 |
+// |                                    RA: 10420319                                      |
+// +--------------------------------------------------------------------------------------+
+
 public class App {
     public static void main(String[] args) throws FileNotFoundException {
         ArvoreBinariaDeBusca arvore = new ArvoreBinariaDeBusca();
@@ -21,10 +35,15 @@ public class App {
         Map<String, Integer> Ordena = new TreeMap<>();
         String palavraMaisLonga = "";
         int numero = 0;
-       
+
+        limparConsole();
+        apresentacao();
+        temporizador(2);
 
         do {
             limparConsole();
+            System.out.println("----------------------");
+            System.out.println("Projeto - Binary tree");
             System.out.println("----------------------");
             System.out.println("1. Carregar texto");
             System.out.println("2. Exibir estatísticas");
@@ -121,6 +140,8 @@ public class App {
                 case 0:
                     System.out.println("Saindo...");
                     temporizador(2);
+                    limparConsole();
+                    apresentacao();
                     break;
 
 
@@ -155,5 +176,21 @@ public class App {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void apresentacao() {
+    System.out.println("                +--------------------------------------------------------------------------------------+");
+    System.out.println("                |                        Universidade Presbiteriana Mackenzie                          |");
+    System.out.println("                |                                                                                      |");
+    System.out.println("                |                                        FCI                                           |");
+    System.out.println("                |                                                                                      |");
+    System.out.println("                |                                     S.I - 03J                                        |");
+    System.out.println("                |                                                                                      |");
+    System.out.println("                |                               Bruna Franca Martinez                                  |");
+    System.out.println("                |                                    RA: 10420225                                      |");
+    System.out.println("                |                                                                                      |");
+    System.out.println("                |                               Jean Pazzini Domingues                                 |");
+    System.out.println("                |                                    RA: 10420319                                      |");
+    System.out.println("                +--------------------------------------------------------------------------------------+");
     }
 }
