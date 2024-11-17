@@ -1,9 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 public class App {
     public static void main(String[] args) throws FileNotFoundException {
@@ -22,6 +24,7 @@ public class App {
        
 
         do {
+            limparConsole();
             System.out.println("----------------------");
             System.out.println("1. Carregar texto");
             System.out.println("2. Exibir estatísticas");
@@ -63,6 +66,7 @@ public class App {
                     } catch (FileNotFoundException e) {
                         System.out.println("Arquivo não encontrado.");
                     }
+                    temporizador(2);
                     break;
                 
 
@@ -72,6 +76,7 @@ public class App {
                     System.out.println("Total de palavras: " + totalPalavras);
                     System.out.println("Total de palavras distintas: " + totalPalavrasDistintas);
                     System.out.println("Palavra mais longa: " + palavraMaisLonga);
+                    temporizador(4);
                     break;
                 
                 case 3:
@@ -79,6 +84,7 @@ public class App {
                     String palavra = scanner.next();
                     qntOcorrencias = arvore.buscar(palavra);
                     System.out.println("Quantidade de ocorrencias da palavra " + palavra + " : " +qntOcorrencias + " Vezes");
+                    temporizador(4);
                     break;
                 
                 case 4: 
@@ -93,6 +99,7 @@ public class App {
                     int contagem = entry.getValue(); // Obtém o valor (contagem)
                     System.out.println("A palavra '" + palavraMap + "' aparece " + contagem + " vezes.");
                 }
+                temporizador(6);
                 break; 
 
                 case 5:
@@ -108,20 +115,45 @@ public class App {
                         Map.Entry<String, Integer> entry = filaPrioridade.poll();
                         System.out.println(i + "º lugar: " + entry.getKey() + ": " + entry.getValue());
                     }
+                    temporizador(4);
                     break;
-
 
                 case 0:
                     System.out.println("Saindo...");
+                    temporizador(2);
                     break;
 
 
                 default:
                     System.out.println("Opção inválida.");
-
+                    temporizador(1);
             }
                 
         } while (opcao != 0);
         scanner.close();
+    }
+
+    public static void limparConsole() {
+        try {
+            String os = System.getProperty("os.name").toLowerCase();
+            ProcessBuilder pb;
+            if (os.contains("win")) {
+                pb = new ProcessBuilder("cmd", "/c", "cls");
+            } else {
+                pb = new ProcessBuilder("clear");
+            }
+            pb.inheritIO().start().waitFor();
+        } catch (IOException | InterruptedException e) {
+            System.err.println("Erro ao limpar o console: " + e.getMessage());
+        }
+    }
+
+    public static void temporizador(int tempo) {
+        try {
+            // Pausa a execução por 1 segundo (ajuste o tempo conforme necessário)
+            TimeUnit.SECONDS.sleep(tempo);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
