@@ -1,10 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -30,6 +27,7 @@ public class App {
             System.out.println("2. Exibir estatísticas");
             System.out.println("3. Busca por palavra");
             System.out.println("4. Ordem Alfabetica e quantidade");
+            System.out.println("5. Top 3 palavras com maior ocorrência");
             System.out.println("0. Sair");
             System.out.println("----------------------");
             System.out.print("Opção: ");
@@ -95,6 +93,21 @@ public class App {
                     System.out.println("A palavra '" + palavraMap + "' aparece " + contagem + " vezes.");
                 }
                 break; 
+
+                case 5:
+                    // Ordenar o TreeMap por contagem em ordem decrescente usando PriorityQueue
+                    PriorityQueue<Map.Entry<String, Integer>> filaPrioridade = new PriorityQueue<>(
+                        (a, b) -> b.getValue() - a.getValue() // Comparador para ordenar por valor decrescente
+                    );
+                    filaPrioridade.addAll(Ordena.entrySet());
+
+                    // Imprimir as 3 palavras com maior ocorrência
+                    System.out.println("Top 3 palavras com maior ocorrência:");
+                    for (int i = 1; i < 4 && !filaPrioridade.isEmpty(); i++) {
+                        Map.Entry<String, Integer> entry = filaPrioridade.poll();
+                        System.out.println(i + "º lugar: " + entry.getKey() + ": " + entry.getValue());
+                    }
+                    break;
 
 
                 case 0:
