@@ -33,11 +33,11 @@ public class ArvoreBinariaDeBusca {
     }
 
     private int buscarRecursivo(Node no, String palavra) {
-        if (no == null) {
+        if (no == null) { //no nulo
             return 0; // Palavra não encontrada
         }
 
-        int comparacao = palavra.compareTo(no.palavra.getPalavra());
+        int comparacao = palavra.compareTo(no.palavra.getPalavra()); // compara a palavra buscada com a palavra armazenada no nó atual
         if (comparacao < 0) {
             return buscarRecursivo(no.left, palavra);
         } else if (comparacao > 0) {

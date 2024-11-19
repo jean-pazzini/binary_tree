@@ -57,20 +57,20 @@ public class App {
 
             switch (opcao) {
                 case 1:
-                    try {
-                        File musica = new File("/workspaces/binary_tree/NossoProjeto/src/musica.txt");
+                    try { //tratamento de excessões
+                        File musica = new File("/workspaces/binary_tree/NossoProjeto/src/musica.txt"); //criando um objeto File
                         Scanner scMusica = new Scanner(musica);
-                        while (scMusica.hasNext()) {
+                        while (scMusica.hasNext()) { // verifica se existe linha a ser processada
                             
-                            String linha = scMusica.nextLine();
-                            if(!linha.isEmpty()) {
+                            String linha = scMusica.nextLine(); //lê a linha inteira e armazena
+                            if(!linha.isEmpty()) { //caso a linha esteja vazia, desconsidera
                                 qtdLinhas++;
-                                String[] palavras = linha.split("\\s+");
+                                String[] palavras = linha.split("\\s+"); // divide as palavras utilizando o espaço em branco entre elas
                                 totalPalavras += palavras.length;
-                                for (String palavra : palavras) {
-                                    arvore.insereNovoNo(new Palavra(palavra));
-                                    numero = arvore.buscar(palavra);
-                                    Ordena.put(palavra, numero);
+                                for (String palavra : palavras) { // realiza uma iteração para cada palavra da linha
+                                    arvore.insereNovoNo(new Palavra(palavra)); //insere a palavra na arvore
+                                    numero = arvore.buscar(palavra); // busca a palavra na arvore e guarda o numero de ocorrencias dela
+                                    Ordena.put(palavra, numero); // adiciona a palavra e o numero de ocorrencias no Map, para depois ordenar futuramente
                                 
                                     if(palavra.length() > palavraMaisLonga.length()){
                                         palavraMaisLonga = palavra;
